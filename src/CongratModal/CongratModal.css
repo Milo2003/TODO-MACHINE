@@ -1,0 +1,41 @@
+.congratBackground {
+  background: rgba(0.25, 0.5, 0.8, 0.8);  position: fixed;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+.congratBackground h2{
+  text-align: center;
+}
+
+.emojis {
+  font-size: 50px;
+}
+
+.containerCongrat {
+  width: 50vw;
+  height: 40vh;
+  background-color: greenyellow;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.aceptar {
+  text-align: center;
+  background: aqua ;
+  width: 80px;
+  height: 40px;
+  border-radius: 15px;
+  border: 2px, solid, white;
+  text-align: center;
+}
+
+

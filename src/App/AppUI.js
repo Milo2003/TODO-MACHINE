@@ -11,6 +11,7 @@ import { TodoForm } from '../TodoForm';
 import { TodosError } from '../TodosError';
 import { TodosLoading } from '../TodosLoading';
 import { EmptyTodos } from '../EmptyTodos';
+import { CongratModal } from '../CongratModal';
 // import { AppEj } from "./AppEj";
 
 function AppUI() {
@@ -21,12 +22,14 @@ function AppUI() {
         cumplirTodo,
         deleteTodo,
         openModal,
-        setOpenModal
+        setOpenModal,
+        openCongratModal,
+        setOpenCongratModal
     } = React.useContext(TodoContext)
 
     return (
         <>
-            <TodoCounter />
+            <TodoCounter setOpenCongratModal={setOpenCongratModal} />
             <TodoSearch />
             <TodoList >
                 {error && <TodosError error={error}/>}
@@ -50,6 +53,10 @@ function AppUI() {
                     <TodoForm/>
                     </div>
                 </Modal>
+            )}
+
+            {openCongratModal && (
+                <CongratModal setOpenCongratModal={setOpenCongratModal}/>
             )}
 
             <CreateTodoButton

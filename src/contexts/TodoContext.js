@@ -15,8 +15,16 @@ function TodoProvider(props) {
 
     const [openModal, setOpenModal] = React.useState(false);
 
+    const [openCongratModal, setOpenCongratModal] = React.useState(false);
+
     const completedTodos = todos.filter(todo => todo.completed).length;
     const totalTodos = todos.length;
+
+    React.useEffect(() => {
+        if (totalTodos > 0 && totalTodos === completedTodos) {
+            setOpenCongratModal(true);
+        }
+    }, [totalTodos, completedTodos]);
 
     let searchedTodos = [];
 
@@ -30,6 +38,7 @@ function TodoProvider(props) {
     else {
         searchedTodos = todos;
     };
+
     const addTodo = (text) => {
         const newItem = [...todos];
         newItem.push({
@@ -42,7 +51,7 @@ function TodoProvider(props) {
     const cumplirTodo = (text) => {
         const todoIndex = todos.findIndex(todo => todo.text === text)
         const newItem = [...todos];
-        newItem[todoIndex].completed = true;
+        newItem[todoIndex].completed = !newItem[todoIndex].completed;
         saveTodos(newItem);
     };
     const deleteTodo = (text) => {
@@ -65,6 +74,8 @@ function TodoProvider(props) {
             openModal,
             setOpenModal,
             addTodo,
+            openCongratModal,
+            setOpenCongratModal
         }}>
             {props.children}
         </TodoContext.Provider>
